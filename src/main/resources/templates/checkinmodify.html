@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>작성</title>
+</head>
+
+<style>
+    .layout{
+        width: 50px;
+        margin : 0 auto;
+        margin-top: 40px;
+    }
+
+    .layout > input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .layout textarea {
+        width: 100%;
+        margin-top: 10px;
+        min-height: 300px;
+    }
+</style>
+<body>
+<div class = "layout">
+    <form th:action="@{/checkin/update/{id}(id=${checkin.id})}" method="post">
+        <input name = "user_id" type="number" th:value="${checkin.user_id}">
+        <input name="category" type="text" th:value="${checkin.category}">
+        <input name = "day" type="date" th:value="${checkin.day}">
+        <input name = "time" type="time" th:value="${checkin.time}">
+        <input name = "week" type="text" th:value="${checkin.week}">
+
+
+        <button type="submit">수정</button>
+        <button th:href="@{/checkin/delete(id=${checkin.id})}">삭제</button>
+        <button onclick = "location.href = '/checkin/list'">목록</button>
+    </form>
+</div>
+</body>
+</html>

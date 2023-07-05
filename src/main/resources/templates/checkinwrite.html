@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>작성</title>
@@ -26,18 +26,16 @@
 <body>
 <div class = "layout">
   <form action = "/checkin/writepro" method="post">
-    <input name = "User_ID" type="text">
-    <input name="Category" type="text">
-    <input name = "year" type="text">
-    <input name = "month" type="text">
-    <input name = "day" type="text">
+    <input name = "user_id" type="text">
+    <input name="category" type="text">
+    <input name = "day" type="date">
+    <input name = "time" type="time">
     <input name = "week" type="text">
-    <input name = "hour" type="text">
-    <input name = "minute" type="text">
 
     <button type="submit">작성</button>
 
   </form>
+  <button onclick = "location.href = '/checkin/list'">목록</button>
 </div>
 </body>
 </html>
