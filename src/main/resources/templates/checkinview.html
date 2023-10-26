@@ -4,18 +4,84 @@
     <meta charset="UTF-8">
     <title>상세 페이지</title>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap');
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
+
+    body {
+        margin: 0px;
+    }
+
+    .box1 {
+        height: 300px;
+        background-color: #fff0d5;
+    }
+    .box1 p {
+        margin: 0px;
+        padding-top: 80px;
+        font-size: 50px;
+        text-align: center;
+    }
+    .foursquare{
+        width: 150px;
+        height: 150px;
+        border-radius: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 90px;
+    }
+    .box2 {
+        margin-top: 110px;
+        text-align: center;
+    }
+    .box2 p {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        width: 400px;
+        height: 40px;
+        font-size: 18px;
+    }
+    .box2 button {
+        margin-top: 10px;
+        width: 100px;
+        height: 35px;
+        background-color: #F25050;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 15px;
+        margin-top:7px;
+    }
+</style>
+
 <body>
-<p th:text="${checkin.user_id}">유저아이디</p>
-<p th:text="${checkin.category}">카테고리</p>
-<p th:text="${checkin.day}">날짜</p>
-<p th:text="${checkin.time}">시간</p>
-<p th:text="${checkin.week}">요일</p>
 
-<a th:href="@{/checkin/delete(id=${checkin.id})}">삭제</a>
+<div class="box1">
+    <p>Detail View</p>
+    <img class="foursquare" src="/image/foursquare.png" alt="포스퀘어"/>
+</div>
 
-<a th:href="@{/checkin/modify/{id}(id=${checkin.id})}">수정</a>
 
-<button onclick = "location.href = '/checkin/list'">목록</button>
+<div class="box2">
+    <p>유저아이디 : <h th:text="${checkin.user_id}"></h></p>
+    <p>카테고리 : <h th:text="${checkin.category}">카테고리</h></p>
+    <p>날짜 : <h th:text="${checkin.day}">날짜</h></p>
+    <p>시간 : <h th:text="${checkin.time}">시간</h></p>
+    <p>요일 : <h th:text="${checkin.week}">요일</h></p>
+
+    <a th:href="@{/checkin/delete(id=${checkin.id})}"><button>삭제</button></a>
+    <a th:href="@{/checkin/modify/{id}(id=${checkin.id})}"><button>수정</button></a>
+
+
+    <button onclick = "location.href = '/checkin/list'">목록</button>
+
+</div>
 
 </body>
 </html>

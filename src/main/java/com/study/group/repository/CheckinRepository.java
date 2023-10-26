@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CheckinRepository extends JpaRepository<check_in, Integer> {
-    Page<check_in>findByCategoryContainingOrWeekContaining(String searchKeyword, Pageable pageable);
+    Page<check_in>findByCategoryContaining(String searchKeyword, Pageable pageable);
 
 
 

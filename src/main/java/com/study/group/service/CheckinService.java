@@ -28,7 +28,7 @@ public class CheckinService {
     }
 
     public Page<check_in> checkinSearchList(String searchKeyword, Pageable pageable){
-        return checkinRepository.findByCategoryContainingOrWeekContaining(searchKeyword, pageable);
+        return checkinRepository.findByCategoryContaining(searchKeyword, pageable);
     }
 
 

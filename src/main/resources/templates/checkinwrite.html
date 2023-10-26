@@ -6,36 +6,92 @@
 </head>
 
 <style>
-  .layout{
-    width: 50px;
-    margin : 0 auto;
-    margin-top: 40px;
-  }
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap');
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
+    body {
+        margin: 0px;
+    }
 
-  .layout > input {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .layout textarea {
-    width: 100%;
-    margin-top: 10px;
-    min-height: 300px;
-  }
+    .box1 {
+        height: 300px;
+        background-color: #fff0d5;
+    }
+    .box1 p {
+        margin: 0px;
+        padding-top: 80px;
+        font-size: 40px;
+        text-align: center;
+    }
+    .foursquare{
+        width: 150px;
+        height: 150px;
+        border-radius: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 90px;
+    }
+    .box2 {
+        text-align: center;
+        margin-top: 110px;
+    }
+    .box2 input, select {
+        margin-top: 10px;
+        width: 400px;
+        height: 40px;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 0;
+        border-bottom-width: 1px;
+    }
+    .box2 input:focus, select:focus {
+        outline: none;
+        border-color: #F25050;
+    }
+    .box2 button {
+        margin-top: 10px;
+        width: 400px;
+        font-weight: bold;
+        height: 35px;
+        background-color: #F25050;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 15px;
+    }
 </style>
+
+
 <body>
-<div class = "layout">
+<div class="box1">
+    <p>Data list write</p>
+    <img class="foursquare" src="/image/foursquare.png" alt="포스퀘어"/>
+</div>
+
+<div class = "box2">
   <form action = "/checkin/writepro" method="post">
-    <input name = "user_id" type="text">
-    <input name="category" type="text">
-    <input name = "day" type="date">
-    <input name = "time" type="time">
-    <input name = "week" type="text">
+   <p>유저아이디 : <input name = "user_id" type="text"></p>
+    <p>카테고리 : <input name="category" type="text"></p>
+    <p>날짜 : <input name = "day" type="date"></p>
+    <p>시간 : <input name = "time" type="time"></p>
+    <p>요일 : <select id="week" name="week">
+        <option value="none">===요일 선택===</option>
+        <option value="Mon" id="Mon">Mon</option>
+        <option value="Tue" id="Tue">Tue</option>
+        <option value="Wed" id="Wed">Wed</option>
+        <option value="Thu" id="Thu">Thu</option>
+        <option value="Fri" id="Fri">Fri</option>
+        <option value="Sat" id="Sat">Sat</option>
+        <option value="Sun" id="Sun">Sun</option>
+    </select><br></p>
 
     <button type="submit">작성</button>
-
   </form>
-  <button onclick = "location.href = '/checkin/list'">목록</button>
+    <button onclick = "location.href = '/checkin/list'">목록</button>
 </div>
 </body>
+
 </html>

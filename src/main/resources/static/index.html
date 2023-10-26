@@ -4,9 +4,93 @@
     <meta charset="UTF-8">
     <title>메인페이지</title>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap');
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
+    body {
+        margin: 0px;
+
+    }
+    .box1 {
+        height: 300px;
+        background-color: #fff0d5;
+        z-index: 1;
+    }
+    .box1 p {
+        margin: 0px;
+        padding-top: 80px;
+        font-size: 40px;
+        text-align: center;
+    }
+    .box2 {
+        margin-top: 110px;
+        text-align: center;
+    }
+
+    .foursquare{
+        width: 150px;
+        height: 150px;
+        border-radius: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 90px;
+        z-index:2;
+    }
+    .text1 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .text2 {
+        font-size:12px;
+        color: gray;
+    }
+    .text3 {
+        font-size: 16px;
+        margin-top: 50px;
+    }
+    .btn {
+        text-align: center;
+    }
+    .button-primary{
+        background-color: #F25050;
+        color: white;
+        font-size: 16px;
+        border: none;
+        width: 120px;
+        height: 35px;
+        border-radius: 10px;
+    }
+    .button-secondary{
+        background-color: #F25050;
+        color: white;
+        font-size: 16px;
+        border: none;
+        width: 120px;
+        height: 35px;
+        border-radius: 10px;
+    }
+</style>
+
 <body>
-    <h1>데이터베이스 설계 및 활용</h1>
-    <button onclick = "location.href = '/checkin/write'">체크인 작성</button>
-    <button onclick = "location.href = '/checkin/list'">체크인 목록</button>
+
+    <div class="box1">
+        <p>데이터베이스 설계 및 활용</p>
+        <img class="foursquare" src="image/foursquare.png" alt="포스퀘어"/>
+    </div>
+
+    <div class="box2">
+        <p class="text1">포스퀘어</p>
+        <p class="text2">포스퀘어의 체크인 데이터를 검색, 등록, 수정, 삭제할 수 있는 사이트입니다.</p>
+        <p class="text3">체크인 데이터 등록을 원하시면 <b>체크인 등록</b> 버튼을, <br>
+            체크인 데이터 목록에서 검색, 수정, 삭제를 원하시면 <b>체크인 목록</b> 버튼을 눌러주세요! </p>
+    </div>
+
+    <div class="btn">
+        <button class="button-primary"  onclick = "location.href = '/checkin/write'">체크인 작성</button>
+        <button class="button-secondary"  onclick = "location.href = '/checkin/list'">체크인 목록</button>
+    </div>
 </body>
 </html>

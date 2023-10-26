@@ -6,60 +6,163 @@
 </head>
 
 <style>
-    .layout{
-        width: 500px;
-        margin : 0 auto;
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap');
+    * {
+        font-family: 'IBM Plex Sans KR', sans-serif;
+    }
+
+    body {
+        margin: 0px;
+
+    }
+
+    body, html {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .layout {
+        width: 700px;
+        margin: 0 auto;
         margin-top: 40px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .pagination {
+        margin-bottom: 20px;
+    }
+    .pagination a, .pagination strong {
+        display: inline-block;
+        padding: 8px 12px;
+        margin-right: 5px;
+        text-decoration: none;
+        color: #000;
+        border: 1px solid #ddd;
+    }
+    .pagination strong {
+        background-color: #007bff;
+        color: #fff;
+    }
+    form {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    input[type="text"] {
+        flex-grow: 1;
+        padding: 8px;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 0;
+        border-bottom-width: 1px;
+    }
+    button[type="submit"] {
+        padding: 6px 12px;
+        background-color: #F25050;
+        color: #fff;
+        border: none;
+        margin-left: 10px;
+        border-radius: 10px;
+    }
+
+    button[type="submit"]:hover{
+        cursor: pointer;
+        box-shadow: 1.5px 1.5px 1.5px black;
+    }
+    .box input:focus {
+        outline: none;
+        border-color: #F25050;
+    }
+    .button-primary {
+        padding: 6px 12px;
+        background-color: gray;
+        color: #fff;
+        border: none;
+        margin-left: 10px;
+        border-radius: 10px;
+    }
+    .button-primary:hover {
+        cursor: pointer;
+        box-shadow: 1.5px 1.5px 1.5px black;
+    }
+    .pagination {
+        text-align: center;
+    }
+    .pagination a {
+        border-radius: 5px;
+    }
+    .pagination strong {
+        border-radius: 5px;
+        background-color: Gray;
+    }
+
+    .table2 a {
+        color: black;
+        text-decoration-line: none;
+    }
+
+    .table2 a:hover{
+        text-decoration-line: underline;
     }
 </style>
 
 <body>
-    <div class = "layout">
-        <table>
-            <thead>
-            <tr>
-                <th>번호</th>
-                <th>User_ID</th>
-                <th>Category</th>
-                <th>Day</th>
-                <th>Time</th>
-                <th>Week</th>
+<div class = "layout">
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>User_ID</th>
+            <th>Category</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Week</th>
 
-            </tr>
-            </thead>
+        </tr>
+        </thead>
 
-            <tbody>
-            <tr th:each="checkin : ${list}">
-                <td th:text="${checkin.id}"></td>
-                <td><a th:text="${checkin.user_id}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
-                <td><a th:text="${checkin.category}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
-                <td><a th:text="${checkin.day}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
-                <td><a th:text="${checkin.time}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
-                <td><a th:text="${checkin.week}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
-            </tr>
-            </tbody>
-        </table>
+        <tbody class="table2">
+        <tr th:each="checkin : ${list}">
+            <td th:text="${checkin.id}"></td>
+            <td><a th:text="${checkin.user_id}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
+            <td><a th:text="${checkin.category}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
+            <td><a th:text="${checkin.day}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
+            <td><a th:text="${checkin.time}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
+            <td><a th:text="${checkin.week}" th:href="@{/checkin/view(id=${checkin.id})}"></a></td>
+        </tr>
+        </tbody>
+    </table>
 
-
-
+    <div class="pagination">
         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
             <a th:if="${page != nowPage}" th:href="@{/checkin/list(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
-            <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+            <strong th:if="${page == nowPage}" th:text="${page}" style="color : white"></strong>
         </th:block>
-
+        <button class="button-primary"  onclick = "location.href = '/checkin/write'">체크인 작성</button>
+    </div>
+    <div class="box">
         <form th:action="@{/checkin/list}" method="get">
             <input type="text" name="searchKeyword">
             <button type="submit">검색</button>
         </form>
-
-
-
-
-
-
-
-
-
     </div>
+
+
+
+</div>
 </body>
 </html>
